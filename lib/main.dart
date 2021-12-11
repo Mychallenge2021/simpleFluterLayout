@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:travel_app/home_page.dart';
+import 'package:travel_app/personal_page.dart';
+import 'package:travel_app/search_page.dart';
 import 'package:travel_app/wellcome_page.dart';
+
+import 'chart_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,6 +35,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  List pages = [
+    const HomePage(),
+    const ChartPage(),
+    const SearchPage(),
+    const PersonalPage(),
+  ];
   int currentIndex = 0;
   void onTap(int index) {
     setState(() {
@@ -40,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(),
+      body: pages[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         elevation: 0,
